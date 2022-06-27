@@ -1,37 +1,66 @@
-﻿Console.WriteLine("Задача 2");
-int a = Convert.ToInt32(Console.ReadLine()),
-    b = Convert.ToInt32(Console.ReadLine());
-Console.Write("Большее число - ");
-if (a > b) { Console.WriteLine(a); }
-else { Console.WriteLine(b);}
+﻿Console.WriteLine("Задача 10");
+int temp;
+h10:
+Console.Write("Введите трехзначное число ");
+string a = Console.ReadLine();
 
-Console.WriteLine("Задача 4");
-a = Convert.ToInt32(Console.ReadLine());
-b = Convert.ToInt32(Console.ReadLine());
-int c = Convert.ToInt32(Console.ReadLine()),
-    max;
-Console.Write("Большее число из трех - ");
-if (a > b)
+
+if (a.Length == 3 & int.TryParse(a, out temp))
 {
-    max = a;
+    Console.Write($"Вы ввели {a}, Вторая цифра ");
+    Console.Write(a[1] + "\n");
+    Console.WriteLine("------------------");
 }
 else
 {
-    max = b;}
-if (c > max) { max = c; }
+    Console.WriteLine($"Введите трехзначное число, Вы ввели {a}");
+    goto h10;}
 
-Console.WriteLine(max);
 
-Console.WriteLine("Задача 6");
-a = Convert.ToInt32(Console.ReadLine());
-Console.Write("Четное ли число ? Вот и ответ - ");
-if (a % 2 == 0) { Console.WriteLine("Да"); }
-else { Console.WriteLine("Нет");}
-
-Console.WriteLine("Задача 8");
-a = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Все четные числа в диапазоне от 1 до " + a);
-for (int i = 1; i <= a; i++)
+Console.WriteLine("Задача 13");
+h13:
+Console.Write("Введите число ");
+a = Console.ReadLine();
+if (int.TryParse(a, out temp))
 {
-    if (i % 2 == 0) {Console.WriteLine(i);}
+    if (a.Length >= 3)
+    {
+        Console.Write($"Вы ввели {a}, третья цифра ");
+        Console.Write(a[2] + "\n");
+        Console.WriteLine("------------------");
+    }
+    else
+    {
+        Console.WriteLine($"Вы ввели {a}, третьей цифры нет");
+    }
 }
+
+else
+{
+    Console.WriteLine($"Введите число, Вы ввели {a}");
+    goto h13;}
+
+
+Console.WriteLine("Задача 15");
+h15:
+Console.Write("Введите день недели (число) ");
+a = Console.ReadLine();
+if (int.TryParse(a, out temp))
+{
+    temp = Convert.ToInt32(a);
+    if (temp == 6 | temp == 7)
+    {
+        Console.WriteLine($"Ура, Выходной!!!!");
+        Console.WriteLine("------------------");
+    }
+    else
+    {
+        Console.WriteLine($"Работаем, к сожалению {a} день недели не выходной");
+    }
+}
+
+else
+{
+    Console.WriteLine($"Введите число, Вы ввели {a}");
+    goto h15;}
+
