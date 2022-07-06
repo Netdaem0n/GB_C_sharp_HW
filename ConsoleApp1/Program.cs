@@ -1,37 +1,16 @@
-﻿Console.WriteLine("Задача 2");
-int a = Convert.ToInt32(Console.ReadLine()),
-    b = Convert.ToInt32(Console.ReadLine());
-Console.Write("Большее число - ");
-if (a > b) { Console.WriteLine(a); }
-else { Console.WriteLine(b);}
-
-Console.WriteLine("Задача 4");
-a = Convert.ToInt32(Console.ReadLine());
-b = Convert.ToInt32(Console.ReadLine());
-int c = Convert.ToInt32(Console.ReadLine()),
-    max;
-Console.Write("Большее число из трех - ");
-if (a > b)
+﻿Console.WriteLine("Задача 19");
+//Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+//на pythone было бы еще быстрее
+// [::-1]
+//
+Console.WriteLine("Введите число ");
+string c, a = Console.ReadLine();
+char[] b = a.ToCharArray();
+Array.Reverse(b);
+c = new string(b);
+if (c == a)
 {
-    max = a;
+   Console.WriteLine("Yes"); 
 }
-else
-{
-    max = b;}
-if (c > max) { max = c; }
+else {Console.WriteLine("No");}
 
-Console.WriteLine(max);
-
-Console.WriteLine("Задача 6");
-a = Convert.ToInt32(Console.ReadLine());
-Console.Write("Четное ли число ? Вот и ответ - ");
-if (a % 2 == 0) { Console.WriteLine("Да"); }
-else { Console.WriteLine("Нет");}
-
-Console.WriteLine("Задача 8");
-a = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Все четные числа в диапазоне от 1 до " + a);
-for (int i = 1; i <= a; i++)
-{
-    if (i % 2 == 0) {Console.WriteLine(i);}
-}
