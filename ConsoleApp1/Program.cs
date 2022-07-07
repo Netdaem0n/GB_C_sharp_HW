@@ -1,43 +1,30 @@
-﻿Console.WriteLine("Задача 19");
-//Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-//на pythone было бы еще быстрее
-// [::-1]
-//
+﻿
+Console.WriteLine("Задача 25");
+//Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+
+Console.WriteLine("Введите число A и число B");
+double a = Convert.ToInt32(Console.ReadLine()), 
+    b = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine(Math.Pow(a, b));
+
+Console.WriteLine("Задача 27");
+//Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
 Console.WriteLine("Введите число ");
-string c, a = Console.ReadLine();
-char[] b = a.ToCharArray();
-Array.Reverse(b);
-c = new string(b);
-if (c == a)
+string chislo = Console.ReadLine();
+int summa = 0;
+for (int i = 0; i < chislo.Length; i++)
 {
-    Console.WriteLine("Yes"); 
+    int chislo1 = Convert.ToInt32(Char.GetNumericValue(chislo[i]));
+    summa += chislo1;
 }
-else {Console.WriteLine("No");}
+Console.WriteLine(summa);
 
-Console.WriteLine("Задача 21");
-//Напишите программу, которая принимает на вход координаты двух точек
-//и находит расстояние между ними в 3D пространстве.
-Console.WriteLine("Введите координаты двух точек в формате, каждое с новой строки");
-double[] abc = new double[3];
-double[] def = new double[3];
-abc[0] = Convert.ToDouble(Console.ReadLine());
-abc[1] = Convert.ToDouble(Console.ReadLine());
-abc[2] = Convert.ToDouble(Console.ReadLine());
-def[0] = Convert.ToDouble(Console.ReadLine());
-def[1] = Convert.ToDouble(Console.ReadLine());
-def[2] = Convert.ToDouble(Console.ReadLine());
-double distanse;
-distanse = Math.Sqrt(
-    Math.Pow(def[0] - abc[0], 2) +
-    Math.Pow(def[1] - abc[1], 2) +
-    Math.Pow(def[2] - abc[2], 2)
-);
-Console.WriteLine(distanse);
-
-Console.WriteLine("Задача 23");
-Console.WriteLine("Введите число N");
-int N = Convert.ToInt32(Console.ReadLine());
-for (int i = 1; i <= N; i++)
+Console.WriteLine("Задача 29");
+//Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+char[] array = new char[8];
+Random rnd = new Random();
+for (int i = 0; i < array.Length; i++)
 {
-    Console.Write(Math.Pow(i, N) + " ");
+    array[i] = Convert.ToChar(rnd.Next('a', 'a' + 27));
+    Console.Write("{0} ", array[i]);
 }
