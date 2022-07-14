@@ -1,50 +1,97 @@
-﻿Console.WriteLine("Задача 41");
-//Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
-//0, 7, 8, -2, -2 -> 2
-//1, -7, 567, 89, 223-> 3
-//
-//print([int(x) > 0 for x in input().split(",")].count(True))
-//
-//print(len([x for x in input().split(",") if int(x) > 0]))
-
-
-
-Console.Write("Введите числа через разделитель запрятую (пример: 3, 4, -7)");
-
-string user_text = Console.ReadLine();
-string[] numbers = user_text.Split(',');
-
-void wtf(string[] numbers)
+﻿Console.WriteLine("Задача 34");
+//Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами.
+//Напишите программу, которая покажет количество чётных чисел в массиве.
+//[345, 897, 568, 234] -> 2
+Console.WriteLine("Введите количество элементов в массиве: ");
+int N = Convert.ToInt32(Console.ReadLine());
+int[] array = new int[N];
+void fillArray(int[] my_array)
 {
-    int temp_ok = 0;
-    for (int i = 0; i < numbers.Length; i++)
+    for (int i = 0; i < my_array.Length; i++)
     {
-        int temp = Convert.ToInt32(numbers[i]);
-        if (temp > 0) temp_ok++;
+        my_array[i] = new Random().Next(100, 1000);
     }
-    Console.WriteLine("Чисел больше 0 : " + temp_ok);
+
 }
-
-wtf(numbers);
-
-Console.WriteLine("Задача 43");
-//Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых,
-//заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
-//b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
-Console.WriteLine("Введите b1, k1, b2 и k2");
-int b1 = Convert.ToInt32(Console.ReadLine()),
-    k1 = Convert.ToInt32(Console.ReadLine()),
-    b2 = Convert.ToInt32(Console.ReadLine()),
-    k2 = Convert.ToInt32(Console.ReadLine());
-int x, y;
-if (k1 == k2) Console.WriteLine("Эти прямые параллельны");
-else
+void fillArrayDouble(double[] my_array)
 {
-    x = (b1 - b2) / (k2 - k1);
-    y = (k2 * b1 - k1 * b2) / (k2 - k1);
-    Console.WriteLine($"Точка пересечения P имеет координаты ({x},{y}) ");
+    for (int i = 0; i < my_array.Length; i++)
+    {
+        my_array[i] = new Random().NextDouble() * new Random().Next(-500, 500);
+    }
+
 }
+void printArray(int[] my_array)
+{
+    for (int i = 0; i < my_array.Length; i++)
+    {
+        Console.Write(my_array[i] + " ");
+        
+    }
+Console.WriteLine();
+}
+void printArrayDouble(double[] my_array)
+{
+    for (int i = 0; i < my_array.Length; i++)
+    {
+        Console.Write(my_array[i] + " ");
+        
+    }
+    Console.WriteLine();
+}
+void printArrayChetnie(int[] my_array)
+{
+    int count = 0;
+    for (int i = 0; i < my_array.Length; i++)
+    {
+        if (my_array[i] % 2 == 0) count++;
+
+    }
+    Console.WriteLine("Четных чисел " + count);
+}
+fillArray(array);
+printArray(array);
+printArrayChetnie(array);
 
 
+Console.WriteLine("Задача 36");
+//Задача 36: Задайте одномерный массив, заполненный случайными числами.
+//Найдите сумму элементов, стоящих на нечётных позициях.
+//[3, 7, 23, 12] -> 19
+//[-4, -6, 89, 6] -> 0
+Console.WriteLine("Введите количество элементов в массиве: ");
+int N2 = Convert.ToInt32(Console.ReadLine());
+int[] array2 = new int[N2];
+void summaElementovNaNechetnixMestax(int[] my_array)
+{
+    int count = 0;
+    if (my_array.Length <= 3)
+    {
+        Console.WriteLine("Cумма элементов, стоящих на нечётных позициях " + my_array[1]);
+        return;
+    }
+    for (int i = 1; i < my_array.Length; i = i+2)
+    {
+        count += my_array[i];
 
+    }
+    Console.WriteLine("Cумма элементов, стоящих на нечётных позициях " + count);
+}
+fillArray(array2);
+printArray(array2);
+summaElementovNaNechetnixMestax(array2);
+
+
+Console.WriteLine("Задача 36");
+//Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+//[3 7 22 2 78] -> 76
+Console.WriteLine("Введите количество элементов в массиве: ");
+int N3 = Convert.ToInt32(Console.ReadLine());
+double[] array3 = new Double[N3];
+double max, min, raznica;
+
+fillArrayDouble(array3);
+printArrayDouble(array3);
+Console.WriteLine($"{array3.Max()} {array3.Min()}");
+Console.WriteLine(array3.Max() - array3.Min());
 
