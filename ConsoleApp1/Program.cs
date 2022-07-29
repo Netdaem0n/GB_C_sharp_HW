@@ -1,50 +1,128 @@
-﻿Console.WriteLine("Задача 41");
-//Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
-//0, 7, 8, -2, -2 -> 2
-//1, -7, 567, 89, 223-> 3
-//
-//print([int(x) > 0 for x in input().split(",")].count(True))
-//
-//print(len([x for x in input().split(",") if int(x) > 0]))
+﻿Console.WriteLine("Задача 47");
+//Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+//m = 3, n = 4.
+//0,5 7 -2 -0,2
+//1 -3,3 8 -9,9
+//8 7,8 -7,1 9
 
 
 
-Console.Write("Введите числа через разделитель запрятую (пример: 3, 4, -7)");
+Console.WriteLine($"Задайте двумерный массив размером m * n, заполненный случайными вещественными числами.");
+Console.Write("Введите m: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите n: ");
+int n = Convert.ToInt32(Console.ReadLine());
 
-string user_text = Console.ReadLine();
-string[] numbers = user_text.Split(',');
+double[,] array = new double[m, n];
+CreateArrayDouble(array);
+WriteArray(array);
+Console.WriteLine();
 
-void wtf(string[] numbers)
+void CreateArrayDouble(double[,] array)
 {
-    int temp_ok = 0;
-    for (int i = 0; i < numbers.Length; i++)
+    for (int i = 0; i < m; i++)
     {
-        int temp = Convert.ToInt32(numbers[i]);
-        if (temp > 0) temp_ok++;
+        for (int j = 0; j < n; j++)
+        {
+            array[i, j] = new Random().NextDouble() * new Random().Next(-999, 999);
+        }
     }
-    Console.WriteLine("Чисел больше 0 : " + temp_ok);
 }
 
-wtf(numbers);
+void WriteArray (double[,] array){
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            double alignNumber = Math.Round(array[i, j], 3);
+            Console.Write(alignNumber + " ");
+        }
+        Console.WriteLine();
+    }
+}
 
-Console.WriteLine("Задача 43");
-//Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых,
-//заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
-//b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
-Console.WriteLine("Введите b1, k1, b2 и k2");
-int b1 = Convert.ToInt32(Console.ReadLine()),
-    k1 = Convert.ToInt32(Console.ReadLine()),
-    b2 = Convert.ToInt32(Console.ReadLine()),
-    k2 = Convert.ToInt32(Console.ReadLine());
-int x, y;
-if (k1 == k2) Console.WriteLine("Эти прямые параллельны");
-else
+Console.WriteLine("Задача 50");
+//Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает
+//значение этого элемента или же указание, что такого элемента нет. Во вводе первая цифра - номер строки,
+//вторая - столбца. Цифры не больше 9.
+//Например, задан массив:
+//1 4 7 2
+//5 9 2 3
+//8 4 2 4
+//17 -> такого числа в массиве нет
+
+Console.WriteLine($"Задайте координаты элемента m * n,  Во вводе первая цифра - номер строки, вторая - столбца. Цифры не больше 9.");
+Console.Write("Введите mn (Пример - 99 или 17) : ");
+string mn = Console.ReadLine();
+
+int first_element = Convert.ToInt32(char.GetNumericValue(mn[0]));
+
+int second_element = Convert.ToInt32(char.GetNumericValue(mn[1]));
+
+
+check_element_position(array, first_element,second_element);
+
+void check_element_position(double[,] array, int el1, int el2)
 {
-    x = (b1 - b2) / (k2 - k1);
-    y = (k2 * b1 - k1 * b2) / (k2 - k1);
-    Console.WriteLine($"Точка пересечения P имеет координаты ({x},{y}) ");
+    int el1_real = array.GetLength(0);
+    int el2_real = array.GetLength(1);
+    Console.WriteLine($"{el1_real} {el2_real} {el1} {el2}");
+    if ( el1 > el1_real || el2 > el2_real) Console.WriteLine(mn + " - такого числа в массиве нет");
+    else
+    {
+        if (el1 == 0) el1 = 1;
+        if (el2 == 0) el2 = 1;
+        Console.WriteLine(array[el1-1, el2-1]);
+    }
 }
 
 
+Console.WriteLine("Задача 52");
+//Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+//Например, задан массив:
+//1 4 7 2
+//5 9 2 3
+//8 4 2 4
+//Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+int[,] arrayint = new int[m, n];
+CreateArrayInteger(arrayint);
+WriteArrayInt(arrayint);
+SredneeArrayInt(arrayint);
 
 
+
+void CreateArrayInteger(int[,] array)
+{
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            array[i, j] = new Random().Next(-9999, 9999);
+        }
+    }
+}
+
+void WriteArrayInt (int[,] array){
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+void SredneeArrayInt (int[,] array)
+{
+    int temp = 0;
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            temp += array[i, j];
+        }
+        Console.WriteLine(temp / n);
+    }
+}
