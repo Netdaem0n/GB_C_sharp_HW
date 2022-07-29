@@ -89,7 +89,7 @@ int[,] arrayint = new int[m, n];
 CreateArrayInteger(arrayint);
 WriteArrayInt(arrayint);
 SredneeArrayInt(arrayint);
-
+SredneeArrayIntKolonka(arrayint);
 
 
 void CreateArrayInteger(int[,] array)
@@ -98,7 +98,7 @@ void CreateArrayInteger(int[,] array)
     {
         for (int j = 0; j < n; j++)
         {
-            array[i, j] = new Random().Next(-9999, 9999);
+            array[i, j] = new Random().Next(-99, 99);
         }
     }
 }
@@ -123,6 +123,25 @@ void SredneeArrayInt (int[,] array)
         {
             temp += array[i, j];
         }
-        Console.WriteLine(temp / n);
+        Console.WriteLine($"Среднее арифметическое строки " + temp / n);
+    }
+    Console.WriteLine();
+}
+
+void SredneeArrayIntKolonka (int[,] array)
+{
+    int []sum=new int [n];
+    for (int i=0; i<n; i++)
+    {
+        for(int j=0; j<m; j++)
+        {
+            sum[i] += array[j, i];
+        }
+    }
+
+    foreach (double elem in sum)
+    {
+                
+        Console.WriteLine(elem/m);
     }
 }
