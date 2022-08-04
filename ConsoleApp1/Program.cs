@@ -12,6 +12,7 @@ Console.WriteLine("Вы выбрали " + answer);
 string goodToGo = "";
 MyChoise(answer);
 var goodToGoArray = goodToGo.Split(" ");
+PrintArray(goodToGoArray);
 
 void MyChoise(string choise)
 {
@@ -36,7 +37,14 @@ void CheckSize(string[] myarray)
     {
         if (myarray[i].Length <= 3) emptyString += myarray[i] + " ";
     }
-    Console.WriteLine(emptyString);
     goodToGo = emptyString;
+}
+
+void PrintArray (string[] myarray)
+{
+    for (int i = 0; i < myarray.Length; i++)
+    {
+        Console.Write(myarray[i] + " ");
+    }
 }
 
