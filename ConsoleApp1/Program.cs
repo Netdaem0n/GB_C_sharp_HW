@@ -8,3 +8,35 @@ Console.Write("Использовать массив строк заданный
 answer = Console.ReadLine();
 }
 Console.WriteLine("Вы выбрали " + answer);
+
+string goodToGo = "";
+MyChoise(answer);
+var goodToGoArray = goodToGo.Split(" ");
+
+void MyChoise(string choise)
+{
+    if (choise == "1")
+    {
+        string[] array = new string[6]{"value1","value2","value3", "11", "!", "!!!!!"};
+        CheckSize(array);
+    }
+    if (choise == "2")
+    {
+        Console.Write("задайте его через пробел: ");
+        string a = Console.ReadLine();
+        var array = a.Split(" ");
+        CheckSize(array);
+    }
+}
+
+void CheckSize(string[] myarray)
+{
+    string emptyString = "";
+    for (int i = 0; i < myarray.Length; i++)
+    {
+        if (myarray[i].Length <= 3) emptyString += myarray[i] + " ";
+    }
+    Console.WriteLine(emptyString);
+    goodToGo = emptyString;
+}
+
